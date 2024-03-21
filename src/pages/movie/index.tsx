@@ -38,6 +38,7 @@ export default function MoviePage() {
 
   useEffect(() => {
     getMovie();
+    window.scrollTo(0, 0);
   }, [getMovie]);
 
   return (
