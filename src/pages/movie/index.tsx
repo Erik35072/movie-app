@@ -45,10 +45,14 @@ export default function MoviePage() {
 
   return (
     <WrapWithLoading loading={loading}>
-      <motion.section className="py-10" initial={{ opacity: 0, scaleY: 0 }} animate={{ opacity: 1, scaleY: 1 }}>
+      <motion.section
+        className="py-10 px-5 sm:px-auto"
+        initial={{ opacity: 0, scaleY: 0 }}
+        animate={{ opacity: 1, scaleY: 1 }}
+      >
         <div className="max-width-limit h-auto m-auto gap-5 flex flex-col sm:flex-row sm:space-x-10 text-gray-300">
           <div className="w-full sm:w-[80%] flex flex-col space-y-5">
-            <div className="flex justify-between">
+            <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 justify-between">
               <h1 className="text-4xl text-sky-500 drop-shadow-[4px_4px_4px_rgba(12,12,12,0.5)]">{movie?.title}</h1>
               <ToggleToWatchListButton id={movie?.id ?? ""} />
             </div>
