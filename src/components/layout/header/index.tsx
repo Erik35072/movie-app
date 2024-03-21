@@ -17,7 +17,7 @@ export default function Header() {
         </div>
         <div className="flex space-x-2 flex-col sm:flex-row">
           <div className="py-2 px-3 text-slate-300 tracking-[2px] text-center">
-            MY MOVIES:&nbsp;&nbsp;
+            WATCHLIST:&nbsp;&nbsp;
             <span className="font-bold text-xl">{watchListMoviesCount}</span>
           </div>
         </div>
