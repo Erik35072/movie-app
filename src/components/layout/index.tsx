@@ -10,7 +10,9 @@ export default function Layout({ children }: Props) {
   return (
     <React.Fragment>
       <Header />
-      <main className="min-h-screen">{children}</main>
+      <main className="min-h-screen ">
+        <div className="max-width-limit m-auto">{children}</div>
+      </main>
       <Footer />
     </React.Fragment>
   );

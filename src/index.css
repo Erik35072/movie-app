@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .max-width-limit {
+    @apply sm:max-w-[500px] md:max-w-[700px] lg:max-w-[900px] xl:max-w-[1250px];
+  }
+}

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <header className="w-full h-[170px] sm:h-[100px] bg-gradient-to-r from-[rgba(30,30,30,0.9)] to-[rgba(160,160,160,0.9)] sticky top-0 z-[999]">
-      <div className="w-[85%] h-full m-auto flex flex-col sm:flex-row items-center justify-around sm:justify-between">
+      <div className="max-width-limit h-full m-auto flex flex-col sm:flex-row items-center justify-around sm:justify-between">
         <div>
           <Link to="/" className="text-slate-300 text-4xl font-bold">
             Movie<span className="text-[44px] text-sky-700">X</span>
