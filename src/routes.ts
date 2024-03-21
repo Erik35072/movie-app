@@ -8,7 +8,7 @@ interface Routes {
 
 const routes: Routes[] = [
   { path: "/", Component: MainPage, withLayout: true },
-  { path: "/movie:id", Component: MoviePage, withLayout: true },
+  { path: "/movie/:id", Component: MoviePage, withLayout: true },
   { path: "*", Component: NotFoundPage, withLayout: false }
 ];
 
