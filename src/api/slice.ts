@@ -5,7 +5,7 @@ import { RequestOptions, ResponseModel } from "../types/api";
 const HOST = process.env.REACT_APP_BASEURL!;
 
 export default class ApiSlice {
-  static defaultAuth = false;
+  static defaultAuth = true;
   static baseUrl = HOST;
 
   static async request<T = unknown>(
@@ -16,7 +16,7 @@ export default class ApiSlice {
   ): Promise<ResponseModel<T>> {
     let headers: { Authorization?: string } = {};
 
-    if (this.defaultAuth || options?.auth) {
+    if (this.defaultAuth) {
       headers.Authorization = `Bearer ${process.env.REACT_APP_API_TOKEN ?? ""}`; // for most of requests;
     }
 
@@ -32,7 +32,14 @@ export default class ApiSlice {
           responseType: "json"
         })) || {};
 
-      return rsp.data;
+      return {
+        data: rsp.data ?? null,
+        error: {
+          code: rsp.data.status_code ?? null,
+          message: rsp.data.status_message ?? null,
+          success: rsp.data.success ?? null
+        }
+      };
     } catch (err) {
       return (err as AxiosError<ResponseModel<T>>).response!.data;
     }
