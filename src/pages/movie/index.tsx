@@ -12,6 +12,8 @@ import { FaCalendar, FaClock, FaStar } from "react-icons/fa";
 import { MovieDetails } from "../../types/movies";
 // utils
 import { motion } from "framer-motion";
+// redux
+import { ToggleToWatchListButton } from "../../components/movies";
 
 export default function MoviePage() {
   const { id } = useParams();
@@ -46,7 +48,10 @@ export default function MoviePage() {
       <motion.section className="py-10" initial={{ opacity: 0, scaleY: 0 }} animate={{ opacity: 1, scaleY: 1 }}>
         <div className="max-width-limit h-auto m-auto gap-5 flex flex-col sm:flex-row sm:space-x-10 text-gray-300">
           <div className="w-full sm:w-[80%] flex flex-col space-y-5">
-            <h1 className="text-4xl text-sky-500 drop-shadow-[4px_4px_4px_rgba(12,12,12,0.5)]">{movie?.title}</h1>
+            <div className="flex justify-between">
+              <h1 className="text-4xl text-sky-500 drop-shadow-[4px_4px_4px_rgba(12,12,12,0.5)]">{movie?.title}</h1>
+              <ToggleToWatchListButton id={movie?.id ?? ""} />
+            </div>
             <div className="flex space-x-4">
               <FaCalendar className="text-sky-500 text-[18px]" />
               <span>{movie?.release_date.split("-").reverse().join(".")}</span>

@@ -33,7 +33,7 @@ export interface MovieDetails extends MovieCommon {
 }
 
 export interface WatchListMovie {
-  id: number;
+  id: string | number;
 }
 
 export type Collection = {
