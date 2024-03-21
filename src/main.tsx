@@ -1,29 +1,19 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 // styles
 import "./index.css";
 // routing data
-import routes from "./routes";
-import Layout from "./components/layout";
-
-const router = createBrowserRouter(
-  routes.map(({ path, Component, withLayout }) => ({
-    path,
-    loader: () => <div>Loading...</div>,
-    Component: () =>
-      withLayout ? (
-        <Layout>
-          <Component />
-        </Layout>
-      ) : (
-        <Component />
-      )
-  }))
-);
+import router from "./routes";
+// providers
+import { SnackbarProvider } from "notistack";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <SnackbarProvider
+    autoHideDuration={2000}
+    maxSnack={3}
+    style={{ maxWidth: "40vw" }}
+    anchorOrigin={{ horizontal: "right", vertical: "top" }}
+  >
     <RouterProvider router={router} />
-  </React.StrictMode>
+  </SnackbarProvider>
 );
