@@ -5,7 +5,7 @@ import { socialMedia } from "../../../providers/local-data";
 export default function Footer() {
   return (
     <footer className="w-full h-[200px] sm:h-[150px] bg-sky-700">
-      <nav className="w-[85%] h-full m-auto flex flex-col items-center justify-around sm:justify-between sm:flex-row">
+      <nav className="max-width-limit h-full m-auto flex flex-col items-center justify-around sm:justify-between sm:flex-row">
         <div className="flex flex-col space-y-1">
           <div className="flex text-4xl text-slate-900 space-x-8">
             {socialMedia.map(({ name, url, Icon }) => (

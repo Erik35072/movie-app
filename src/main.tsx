@@ -1,29 +1,30 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 // styles
 import "./index.css";
 // routing data
-import routes from "./routes";
-import Layout from "./components/layout";
+import router from "./routes";
+// providers
+import { SnackbarProvider } from "notistack";
+// redux
+import { PersistGate } from "redux-persist/integration/react";
+import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { store } from "./providers/store";
 
-const router = createBrowserRouter(
-  routes.map(({ path, Component, withLayout }) => ({
-    path,
-    loader: () => <div>Loading...</div>,
-    Component: () =>
-      withLayout ? (
-        <Layout>
-          <Component />
-        </Layout>
-      ) : (
-        <Component />
-      )
-  }))
-);
+const persistor = persistStore(store);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <PersistGate persistor={persistor}>
+    <Provider store={store}>
+      <SnackbarProvider
+        autoHideDuration={2000}
+        maxSnack={3}
+        style={{ maxWidth: "40vw" }}
+        anchorOrigin={{ horizontal: "right", vertical: "top" }}
+      >
+        <RouterProvider router={router} />
+      </SnackbarProvider>
+    </Provider>
+  </PersistGate>
 );

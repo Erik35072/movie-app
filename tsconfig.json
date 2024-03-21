@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"],
+  "include": ["src", "src/providers/store/slices/watchlist/.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
