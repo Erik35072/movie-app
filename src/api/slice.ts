@@ -34,11 +34,9 @@ export default class ApiSlice {
 
       return {
         data: rsp.data ?? null,
-        error: {
-          code: rsp.data.status_code ?? null,
-          message: rsp.data.status_message ?? null,
-          success: rsp.data.success ?? null
-        }
+        status_code: null,
+        status_message: null,
+        success: true
       };
     } catch (err) {
       return (err as AxiosError<ResponseModel<T>>).response!.data;

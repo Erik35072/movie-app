@@ -1,10 +1,8 @@
 export type ResponseModel<T = unknown> = {
   data?: T;
-  error?: {
-    message: string;
-    code: number;
-    success: boolean;
-  };
+  status_code: number | null;
+  status_message: string | null;
+  success: boolean;
 };
 
 export type RequestOptions = null | {
