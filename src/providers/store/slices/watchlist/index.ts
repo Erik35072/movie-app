@@ -26,4 +26,6 @@ export const { addMovieToWatchList, removeMovieFromWatchList } = watchList_slice
 
 export const getWatchList = (state: Slice) => state.watchList;
 
+export const getWatchListMoviesCount = (state: Slice) => state.watchList.length;
+
 export default watchList_slice.reducer;
