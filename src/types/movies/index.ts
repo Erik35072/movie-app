@@ -32,6 +32,10 @@ export interface MovieDetails extends MovieCommon {
   video: boolean;
 }
 
+export interface WatchListMovie {
+  id: number;
+}
+
 export type Collection = {
   id: number;
   name: string;
