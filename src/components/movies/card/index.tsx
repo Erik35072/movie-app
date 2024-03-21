@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { FaStar, FaCalendar, FaHeart } from "react-icons/fa";
 // types
 import { Movie } from "../../../types/movies";
+// components
+import { Image } from "../../common/assets";
 
 interface Props {
   movie: Movie;
@@ -12,11 +14,7 @@ function MovieCard({ movie }: Props) {
   return (
     <div className="w-[250px] sm:w-[200px] h-[330px] m-auto relative p-3 border-2 border-solid border-sky-700 rounded-md flex flex-col space-y-2 duration-700 hover:shadow-gray-300 hover:shadow-xl hover:border-sky-900">
       <div className="h-[230px]">
-        <img
-          className="w-full h-full rounded-md"
-          src={process.env.REACT_APP_IMAGE_URL_PREFIX + movie.poster_path}
-          alt={movie.title}
-        />
+        <Image className="w-full h-full rounded-md" src={movie.poster_path} alt={movie.title} />
       </div>
       <div className="h-[48px] overflow-hidden font-bold">
         <Link to={`/movie/${movie.id}-${movie.title.toLowerCase().split(" ").join("-")}`}>

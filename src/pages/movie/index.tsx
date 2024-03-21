@@ -1,11 +1,14 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
+import { useSnackbar } from "notistack";
 // api
 import Api from "../../api";
+// components
+import { Image } from "../../components/common/assets";
+// images
+import { FaCalendar, FaClock, FaStar } from "react-icons/fa";
 // types
 import { MovieDetails } from "../../types/movies";
-import { useSnackbar } from "notistack";
-import { FaCalendar, FaClock, FaStar } from "react-icons/fa";
 
 export default function MoviePage() {
   const { id } = useParams();
@@ -54,11 +57,7 @@ export default function MoviePage() {
           <p className="text-justify">{movie?.overview}</p>
         </div>
         <div className="w-full sm:w-[20%] flex justify-center sm:block -order-1 sm:order-1">
-          <img
-            className="w-[65%] sm:w-full rounded-md"
-            src={process.env.REACT_APP_IMAGE_URL_PREFIX + movie?.poster_path}
-            alt={movie?.title}
-          />
+          <Image className="w-[65%] sm:w-full rounded-md" src={movie?.poster_path} alt={movie?.title} />
         </div>
       </div>
     </section>
