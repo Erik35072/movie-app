@@ -13,16 +13,16 @@ const watchList_slice = createSlice({
   name: "watchList",
   initialState,
   reducers: {
-    add: (state, action: PayloadAction<{ movie: WatchListMovie }>) => {
-      state.watchList = [...state.watchList, action.payload.movie];
+    addMovieToWatchList: (state, action: PayloadAction<WatchListMovie>) => {
+      state.watchList = [...state.watchList, action.payload];
     },
-    remove: (state, action: PayloadAction<{ movie: WatchListMovie }>) => {
-      state.watchList = state.watchList.filter(movie => movie.id !== action.payload.movie.id);
+    removeMovieFromWatchList: (state, action: PayloadAction<WatchListMovie>) => {
+      state.watchList = state.watchList.filter(movie => movie.id !== action.payload.id);
     }
   }
 });
 
-export const { add, remove } = watchList_slice.actions;
+export const { addMovieToWatchList, removeMovieFromWatchList } = watchList_slice.actions;
 
 export const getWatchList = (state: Slice) => state.watchList;
 

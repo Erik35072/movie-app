@@ -5,14 +5,19 @@ import Api from "../../api";
 import { Movie } from "../../types/movies";
 // components
 import MovieCard from "../../components/movies/card";
+import { WrapWithLoading } from "../../components/common/wrappers";
 // utils
 import { useSnackbar } from "notistack";
 import { motion } from "framer-motion";
-import { WrapWithLoading } from "../../components/common/wrappers";
+// redux
+import { useSelector } from "react-redux";
+import { getWatchList } from "../../providers/store/slices/watchlist";
 
 export default function MainPage() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const watchList = useSelector(getWatchList);
 
   const { enqueueSnackbar } = useSnackbar(); // useful for showing error or another kind of messages
 
@@ -40,7 +45,7 @@ export default function MainPage() {
         <motion.section className="py-10" initial={{ opacity: 0, y: 100 }} animate={{ opacity: 1, y: 1 }}>
           <div className="grid xs:grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 auto-rows-max md:auto-rows-[330px] gap-5 md:gap-10 min-h-screen pb-10">
             {movies.map(movie => (
-              <MovieCard key={`movie_${movie.id}`} movie={movie} />
+              <MovieCard key={`movie_${movie.id}`} movie={movie} watchList={watchList} />
             ))}
           </div>
         </motion.section>
